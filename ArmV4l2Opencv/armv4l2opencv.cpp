@@ -10,6 +10,7 @@
 ArmV4l2Opencv::ArmV4l2Opencv(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ArmV4l2Opencv)
+
 {
     ui->setupUi(this);
     connect(&vapi, &V4l2Api::sendImage, this, &ArmV4l2Opencv::recvImage);

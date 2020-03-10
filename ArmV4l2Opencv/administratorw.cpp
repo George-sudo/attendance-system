@@ -75,7 +75,7 @@ void AdministratorW::on_TakePhotoBt_clicked()
            FaceNum = 1;
            ui->messageLable_4->setText("该员工已拍照完成,请输入姓名...");
         }
-    }
+    }z
 }
 
 //接收摄像头发送过来的全身图片的脸部图像

@@ -1,5 +1,0 @@
-该目录为源代码。
-（注意：在ubuntu进行（armqmake：QT程序的交叉编译工具）交叉编译时，要将该目录中的
-opencv-3.4.4.arm.tar.bz2解压放到ubuntu的/opt目录下并且将解压后的目录改名为arm-opencv）
-
-ubuntu上编译：armqmake 后 make
