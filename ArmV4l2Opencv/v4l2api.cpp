@@ -5,6 +5,7 @@
 
 using namespace cv;
 using namespace cv::face;
+
 V4l2Api::V4l2Api(const char *dname, int count):deviceName(dname),count(count)
 {
     this->open();
@@ -12,10 +13,12 @@ V4l2Api::V4l2Api(const char *dname, int count):deviceName(dname),count(count)
     PCard = false;
 }
 
+
 V4l2Api::~V4l2Api()
 {
     this->close();
 }
+
 
 void V4l2Api::open()
 {
@@ -33,6 +36,7 @@ void V4l2Api::open()
 #endif
 }
 
+
 void V4l2Api::close()
 {
     enum v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -48,20 +52,19 @@ void V4l2Api::close()
     }
 }
 
+
+/*抓取摄像头的一帧数据（一张图片）*/
 void V4l2Api::grapImage(char *imageBuffer, int *length)
 {
-
-    //select (rfds, wfds, efds, time)
-
-    struct v4l2_buffer readbuf;
+    struct v4l2_buffer readbuf;//内核结构体
     readbuf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
     readbuf.memory = V4L2_MEMORY_MMAP;
-    //perror("read");
+
     if(ioctl(this->vfd, VIDIOC_DQBUF, &readbuf)<0)//取一针数据
     {
         perror("read image fail");
     }
-    //printf("%ld\n", readbuf.length);
+
     *length = readbuf.length;
     memcpy(imageBuffer,framebuffers[readbuf.index].start, framebuffers[readbuf.index].length);
 
@@ -73,6 +76,8 @@ void V4l2Api::grapImage(char *imageBuffer, int *length)
     }
 }
 
+
+/*摄像头初始化*/
 void V4l2Api::video_init()
 {
     //1.打开设备
@@ -84,9 +89,10 @@ void V4l2Api::video_init()
         //抛异常
         throw vexp;
     }
+
     //2.配置采集属性
     struct v4l2_format vfmt;
-    vfmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE; //
+    vfmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
     vfmt.fmt.pix.width = WIDTH;
     vfmt.fmt.pix.height = HEIGHT;
     vfmt.fmt.pix.pixelformat = V4L2_PIX_FMT_YUYV;//（设置视频输出格式，但是要摄像头支持4:2:2）
@@ -117,9 +123,11 @@ void V4l2Api::video_init()
     }
 }
 
+
+/*申请摄像头映射空间*/
 void V4l2Api::video_mmap()
 {
-    //1申请缓冲区队列
+    //1、申请缓冲区队列
     struct v4l2_requestbuffers reqbuffer;
     reqbuffer.count = this->count;//申请缓冲区队列长度
     reqbuffer.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -131,7 +139,7 @@ void V4l2Api::video_mmap()
         throw vexp;
     }
 
-    //2.映射
+    //2、映射
     for(int i=0; i<this->count; i++)
     {
         struct VideoFrame frame;
@@ -159,6 +167,8 @@ void V4l2Api::video_mmap()
 }
 
 
+#if 0
+/*转换yuyv图片格式为rgb*/
 bool V4l2Api::yuyv_to_rgb888(unsigned char *yuyvdata, unsigned char *rgbdata, int picw, int pich)
 {
     int i, j;
@@ -271,9 +281,17 @@ void V4l2Api::jpeg_to_rgb888(unsigned char *jpegData, int size, unsigned char *r
     //9.销毁解码对象
     jpeg_destroy_decompress(&cinfo);
 }
+#endif
+
 
 void V4l2Api::run()
 {
+
+    static Mat yuvImage(HEIGHT,WIDTH,CV_8UC2);//CV_8UC2是代表RGB彩色图像–3通道图像，每个通道8bit
+    static uchar *buffer = yuvImage.data;
+    static Mat rgbImage,headImage,frame;
+    static int len,predictedLabel,id,state;
+    static QString sql,name;
 
     //加载分类器
     if( !face_cascade.load( "haarcascade_frontalface_alt.xml" ) )
@@ -281,62 +299,65 @@ void V4l2Api::run()
         cout << "--(!)Error loading face cascade\n";
         exit(-1);
     }
+
     if( !eyes_cascade.load( "haarcascade_eye_tree_eyeglasses.xml" ) )
     {
         cout << "--(!)Error loading eyes cascade\n";
         exit(-1);
     }
-    Mat yuvImage(HEIGHT,WIDTH,CV_8UC2);
-    uchar *buffer = yuvImage.data;
-    //把yuv转rgb
-    Mat rgbImage;
-    //图片副本
-    Mat headImage;
-    //int times = 0;
-    int len;
+
     while(1)
     {
         grapImage((char *)buffer, &len);
+
         cvtColor(yuvImage, rgbImage, CV_YUV2RGB_YUYV);
 
-        //创建图片副本
+        //创建图片副本,用于剪切脸部
         headImage = rgbImage.clone();
+
         //检测人脸和眼睛,并且剪切出脸部图像headImage
         detectAndDisplay( rgbImage, headImage);
 
-        QImage image(rgbImage.data, rgbImage.cols, rgbImage.rows, rgbImage.step1() , QImage::Format_RGB888);
-        QImage himage(headImage.data, headImage.cols, headImage.rows, headImage.step1() , QImage::Format_RGB888);
-        emit sendImage(image,himage);
+        QImage Q_rgbImage(rgbImage.data, rgbImage.cols, rgbImage.rows, rgbImage.step1() , QImage::Format_RGB888);
+        QImage Q_HeadImage(headImage.data, headImage.cols, headImage.rows, headImage.step1() , QImage::Format_RGB888);
+        emit sendImage(Q_rgbImage,Q_HeadImage);
+
         //打卡
         if(PCard == true)
         {
-            if(himage.width()==92 && himage.height()==112)
+            if(Q_HeadImage.width()==92 && Q_HeadImage.height()==112)
             {
-                himage.save("10.jpg","jpg",100);
-                Mat frame;
+
+                Q_HeadImage.save("10.jpg","jpg",100);
                 frame = imread("10.jpg",0);
+
                 Ptr<EigenFaceRecognizer> model =  EigenFaceRecognizer::create();
                 model->read("MyFacePCAModel.xml");
-                int predictedLabel = model->predict(frame);
+                predictedLabel = model->predict(frame);
 
                 //从数据库中查找该人员信息并且在窗口显示出来
-                QString sql = QString("select * from info where id=%1").arg(predictedLabel);
+                sql = QString("select * from info where id=%1").arg(predictedLabel);
                 QSqlQuery query;
                 query.exec(sql);
+
                 if(query.next())
                 {
-                    QString name = query.value(2).toString();
-                    int id = query.value(0).toInt();
-                    int state = query.value(3).toInt();
+
+                    name = query.value(2).toString();
+
+                    id = query.value(0).toInt();
+
+                    state = query.value(3).toInt();
+
                     //发送信号给ArmV4l2Opencv对象显示员工信息
                     emit sendPersonInfo(name,id,state);
                 }
+
             }
+
             PCard = false;
         }
 
-
-        //qDebug()<<"(("<<times++<<"))";
         msleep(10);
     }
 }
