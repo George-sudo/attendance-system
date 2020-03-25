@@ -1,4 +1,4 @@
-#include "v4l2api.h"
+﻿#include "v4l2api.h"
 #include <QDebug>
 #include <QImage>
 #include <jpeglib.h>

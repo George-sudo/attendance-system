@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/resource">
+        <file>images/start.gif</file>
+        <file>images/LittleRobot.png</file>
+        <file>images/background1.png</file>
+        <file>images/background2.png</file>
+        <file>images/StartButton1.png</file>
+        <file>images/circle.gif</file>
+        <file>images/background.png</file>
+        <file>images/shutdownButton.png</file>
+        <file>images/button1.png</file>
+        <file>images/button2.png</file>
+    </qresource>
+</RCC>

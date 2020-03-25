@@ -1,4 +1,4 @@
-#ifndef ARMV4L2OPENCV_H
+﻿#ifndef ARMV4L2OPENCV_H
 #define ARMV4L2OPENCV_H
 
 #include "administratorw.h"
@@ -9,6 +9,13 @@
 #include <QTime>
 #include <QTimer>
 #include <QDate>
+#include <QPixmap>
+#include <QDir>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QDebug>
+#include <QFileInfo>
+#include <QMovie>
 
 namespace Ui {
 class ArmV4l2Opencv;
@@ -32,11 +39,17 @@ private slots:
 
     void on_pCardBt_clicked();
 
+    void on_shutdownButton_clicked();
+
 private:
     Ui::ArmV4l2Opencv *ui;
     V4l2Api vapi;
     AdministratorW *AdW;
     QTimer mtimer;
+    int StartTime;
+    int InfoShowTimes;
+    QMovie *StartShow;
+    QMovie *CircleLabelShow;
 };
 
 #endif // ARMV4L2OPENCV_H

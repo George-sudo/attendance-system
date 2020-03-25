@@ -57,3 +57,6 @@ LIBS += -L/opt/arm-opencv/lib/ -lopencv_core -lopencv_highgui -lopencv_imgcodecs
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resource.qrc

@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = ArmV4l2Opencv1.0.0
-DISTDIR = /mnt/hgfs/ArmV4l2Opencv/.tmp/ArmV4l2Opencv1.0.0
+DISTDIR = /mnt/hgfs/Desktop/graduation/attendance-system/ArmV4l2Opencv/.tmp/ArmV4l2Opencv1.0.0
 LINK          = arm-linux-g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/usr/local/Qt-Embedded-5.7.0/lib
 LIBS          = $(SUBLIBS) -L./libjpeg -ljpeg -L/opt/arm-opencv/lib/ -lopencv_calib3d -lopencv_highgui -lopencv_shape -lopencv_core -lopencv_imgcodecs -lopencv_stitching -lopencv_dnn -lopencv_imgproc -lopencv_superres -lopencv_face -lopencv_ml -lopencv_videoio -lopencv_features2d -lopencv_objdetect -lopencv_video -lopencv_flann -lopencv_photo -lopencv_videostab -L/usr/local/Qt-Embedded-5.7.0/lib -lQt5Widgets -lQt5Gui -lQt5Sql -lQt5Core -lGLESv2 -lpthread 
@@ -51,13 +51,15 @@ OBJECTS_DIR   = ./
 SOURCES       = main.cpp \
 		armv4l2opencv.cpp \
 		v4l2api.cpp \
-		administratorw.cpp moc_armv4l2opencv.cpp \
+		administratorw.cpp qrc_resource.cpp \
+		moc_armv4l2opencv.cpp \
 		moc_v4l2api.cpp \
 		moc_administratorw.cpp
 OBJECTS       = main.o \
 		armv4l2opencv.o \
 		v4l2api.o \
 		administratorw.o \
+		qrc_resource.o \
 		moc_armv4l2opencv.o \
 		moc_v4l2api.o \
 		moc_administratorw.o
@@ -309,6 +311,7 @@ Makefile: ArmV4l2Opencv.pro /usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnuea
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/features/yacc.prf \
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/features/lex.prf \
 		ArmV4l2Opencv.pro \
+		resource.qrc \
 		/usr/local/Qt-Embedded-5.7.0/lib/libQt5Widgets.prl \
 		/usr/local/Qt-Embedded-5.7.0/lib/libQt5Gui.prl \
 		/usr/local/Qt-Embedded-5.7.0/lib/libQt5Sql.prl \
@@ -430,6 +433,7 @@ Makefile: ArmV4l2Opencv.pro /usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnuea
 /usr/local/Qt-Embedded-5.7.0/mkspecs/features/yacc.prf:
 /usr/local/Qt-Embedded-5.7.0/mkspecs/features/lex.prf:
 ArmV4l2Opencv.pro:
+resource.qrc:
 /usr/local/Qt-Embedded-5.7.0/lib/libQt5Widgets.prl:
 /usr/local/Qt-Embedded-5.7.0/lib/libQt5Gui.prl:
 /usr/local/Qt-Embedded-5.7.0/lib/libQt5Sql.prl:
@@ -448,6 +452,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents resource.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents armv4l2opencv.h v4l2api.h administratorw.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp armv4l2opencv.cpp v4l2api.cpp administratorw.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents armv4l2opencv.ui administratorw.ui $(DISTDIR)/
@@ -474,8 +479,23 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resource.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resource.cpp
+qrc_resource.cpp: resource.qrc \
+		/usr/local/Qt-Embedded-5.7.0/bin/rcc \
+		images/button1.png \
+		images/background2.png \
+		images/circle.gif \
+		images/shutdownButton.png \
+		images/background1.png \
+		images/background.png \
+		images/start.gif \
+		images/LittleRobot.png \
+		images/button2.png \
+		images/StartButton1.png
+	/usr/local/Qt-Embedded-5.7.0/bin/rcc -name resource resource.qrc -o qrc_resource.cpp
+
 compiler_moc_header_make_all: moc_armv4l2opencv.cpp moc_v4l2api.cpp moc_administratorw.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_armv4l2opencv.cpp moc_v4l2api.cpp moc_administratorw.cpp
@@ -739,9 +759,21 @@ moc_armv4l2opencv.cpp: administratorw.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDate \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPixmap \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMovie \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmovie.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimageiohandler.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qplugin.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonvalue.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfactoryinterface.h \
 		armv4l2opencv.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
-	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/ArmV4l2Opencv -I/opt/arm-opencv/include -I/opt/arm-opencv/include/opencv -I/opt/arm-opencv/include/opencv2 -I/mnt/hgfs/ArmV4l2Opencv/libjpeg -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtSql -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include armv4l2opencv.h -o moc_armv4l2opencv.cpp
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/Desktop/graduation/attendance-system/ArmV4l2Opencv -I/opt/arm-opencv/include -I/opt/arm-opencv/include/opencv -I/opt/arm-opencv/include/opencv2 -I/mnt/hgfs/Desktop/graduation/attendance-system/ArmV4l2Opencv/libjpeg -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtSql -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include armv4l2opencv.h -o moc_armv4l2opencv.cpp
 
 moc_v4l2api.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtCore/QThread \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qthread.h \
@@ -960,7 +992,7 @@ moc_v4l2api.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtCore/QThread \
 		/opt/arm-opencv/include/opencv2/face/mace.hpp \
 		v4l2api.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
-	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/ArmV4l2Opencv -I/opt/arm-opencv/include -I/opt/arm-opencv/include/opencv -I/opt/arm-opencv/include/opencv2 -I/mnt/hgfs/ArmV4l2Opencv/libjpeg -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtSql -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include v4l2api.h -o moc_v4l2api.cpp
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/Desktop/graduation/attendance-system/ArmV4l2Opencv -I/opt/arm-opencv/include -I/opt/arm-opencv/include/opencv -I/opt/arm-opencv/include/opencv2 -I/mnt/hgfs/Desktop/graduation/attendance-system/ArmV4l2Opencv/libjpeg -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtSql -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include v4l2api.h -o moc_v4l2api.cpp
 
 moc_administratorw.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
@@ -1217,7 +1249,7 @@ moc_administratorw.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWind
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFileInfo \
 		administratorw.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
-	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/ArmV4l2Opencv -I/opt/arm-opencv/include -I/opt/arm-opencv/include/opencv -I/opt/arm-opencv/include/opencv2 -I/mnt/hgfs/ArmV4l2Opencv/libjpeg -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtSql -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include administratorw.h -o moc_administratorw.cpp
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/Desktop/graduation/attendance-system/ArmV4l2Opencv -I/opt/arm-opencv/include -I/opt/arm-opencv/include/opencv -I/opt/arm-opencv/include/opencv2 -I/mnt/hgfs/Desktop/graduation/attendance-system/ArmV4l2Opencv/libjpeg -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtSql -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include administratorw.h -o moc_administratorw.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1238,7 +1270,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1503,10 +1535,20 @@ main.o: main.cpp armv4l2opencv.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDate \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPixmap \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMovie \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmovie.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimageiohandler.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qplugin.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonvalue.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfactoryinterface.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h
@@ -1773,6 +1815,18 @@ armv4l2opencv.o: armv4l2opencv.cpp armv4l2opencv.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDate \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPixmap \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMovie \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmovie.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimageiohandler.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qplugin.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonvalue.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfactoryinterface.h \
 		ui_armv4l2opencv.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \
@@ -1780,18 +1834,11 @@ armv4l2opencv.o: armv4l2opencv.cpp armv4l2opencv.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qactiongroup.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qapplication.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QButtonGroup \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qbuttongroup.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHBoxLayout \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qboxlayout.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayout.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayoutitem.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qgridlayout.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHeaderView \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qheaderview.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemview.h \
@@ -1817,8 +1864,11 @@ armv4l2opencv.o: armv4l2opencv.cpp armv4l2opencv.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
-		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPixmap
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qboxlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayoutitem.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qgridlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o armv4l2opencv.o armv4l2opencv.cpp
 
 v4l2api.o: v4l2api.cpp v4l2api.h \
@@ -2359,6 +2409,9 @@ administratorw.o: administratorw.cpp administratorw.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o administratorw.o administratorw.cpp
+
+qrc_resource.o: qrc_resource.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resource.o qrc_resource.cpp
 
 moc_armv4l2opencv.o: moc_armv4l2opencv.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_armv4l2opencv.o moc_armv4l2opencv.cpp
