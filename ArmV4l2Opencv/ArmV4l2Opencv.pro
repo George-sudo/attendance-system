@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         armv4l2opencv.cpp \
     v4l2api.cpp \
-    administratorw.cpp
+    administratorw.cpp \
+    MyLineEdit/mylineedit.cpp
 
 HEADERS += \
         armv4l2opencv.h \
     v4l2api.h \
-    administratorw.h
+    administratorw.h \
+    MyLineEdit/mylineedit.h
 
 FORMS += \
         armv4l2opencv.ui \
