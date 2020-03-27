@@ -40,9 +40,6 @@ AdministratorW::AdministratorW(QWidget *parent) :
     v->addWidget(&keyboard, 5);
 
     KeyboardWindow.setLayout(v);
-
-    Administratoruser = "李春港";
-    AdministratorPass = "123456";
 }
 
 AdministratorW::~AdministratorW()
@@ -289,21 +286,35 @@ void AdministratorW::on_pushButton_clicked()
 
 void AdministratorW::on_loginPushButton_clicked()
 {
+    QString sql;
     if(ui->checkBox->checkState() == Qt::Checked)
         SavePass = textInput->text();
 
-    if(ui->UserLineEdit->text() == Administratoruser && ui->PassLineEdit->text() == AdministratorPass)
+    sql = QString("select pass from administrator where user='%1'").arg(ui->UserLineEdit->text());
+    QSqlQuery query;
+    query.exec(sql);
+
+    if(query.first())
     {
-        ui->LoginLabel->hide();
-        ui->loginPushButton->hide();
-        ui->pushButton->hide();
-        ui->UserLineEdit->hide();
-        ui->PassLineEdit->hide();
-        ui->checkBox->hide();
-        ui->HintLabel->hide();
+        if(ui->PassLineEdit->text() == query.value(0).toString())
+        {
+            ui->LoginLabel->hide();
+            ui->loginPushButton->hide();
+            ui->pushButton->hide();
+            ui->UserLineEdit->hide();
+            ui->PassLineEdit->hide();
+            ui->checkBox->hide();
+            ui->HintLabel->hide();
+        }
+        else
+        {
+            ui->HintLabel->setText("密码输入错误！");
+            ui->HintLabel->show();
+        }
     }
     else
     {
+        ui->HintLabel->setText("账号输入错误！");
         ui->HintLabel->show();
     }
 }

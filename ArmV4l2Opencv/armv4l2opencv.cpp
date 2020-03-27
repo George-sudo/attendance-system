@@ -44,7 +44,9 @@ ArmV4l2Opencv::ArmV4l2Opencv(QWidget *parent) :
 
     QSqlQuery query;
     //query.exec("create table info(id integer primary key autoincrement,imagePath text,name text)");
-    query.exec("create table info(id integer ,imagePath text primary key,name text,state integer,uptime text,downtime text)");
+    query.exec("create table info(id integer ,imagePath text primary key,name text,state integer,uptime text,downtime text);\
+create table administrator(user text primary key,pass text);insert into administrator(user,pass) values('李春港','123456')");
+
     //db.close();
 }
 

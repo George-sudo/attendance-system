@@ -66,8 +66,6 @@ private:
     QVBoxLayout *v;
     bool UserAndPassLineEditFlag;
     QString SavePass;
-    QString Administratoruser;
-    QString AdministratorPass;
 };
 
 #endif // ADMINISTRATORW_H

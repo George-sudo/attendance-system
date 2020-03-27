@@ -586,7 +586,7 @@ font: 87 26pt &quot;Arial Black&quot;;</string>
 font: 20pt &quot;方正粗黑宋简体&quot;;</string>
     </property>
     <property name="text">
-     <string>密码或账号输入错误</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
