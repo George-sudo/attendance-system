@@ -1,4 +1,4 @@
-#ifndef ADMINISTRATORW_H
+﻿#ifndef ADMINISTRATORW_H
 #define ADMINISTRATORW_H
 
 #include <QMainWindow>
@@ -8,6 +8,11 @@
 #include <QFileInfo>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QLineEdit>
+#include <QApplication>
+#include <QVBoxLayout>
+#include "MyLineEdit/mylineedit.h"
+#include "Keyboard/Keyboard.h"
 
 namespace Ui {
 class AdministratorW;
@@ -33,6 +38,9 @@ private slots:
 
     void on_SureBt_clicked();
 
+    void UserLineEditClicked();
+    void PassLineEditClicked();
+
 private:
     Ui::AdministratorW *ui;
     QPixmap GImage;
@@ -41,6 +49,11 @@ private:
     int DirFileNum;
     //记录人脸图片拍照的张数
     int FaceNum;
+    //键盘
+    AeaQt::Keyboard keyboard;
+    QWidget KeyboardWindow;
+    QLineEdit *textInput;
+    QVBoxLayout *v;
 };
 
 #endif // ADMINISTRATORW_H

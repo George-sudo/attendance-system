@@ -29,13 +29,18 @@ SOURCES += \
         armv4l2opencv.cpp \
     v4l2api.cpp \
     administratorw.cpp \
-    MyLineEdit/mylineedit.cpp
+    MyLineEdit/mylineedit.cpp \
+    Keyboard/Keyboard.cpp \
+    Keyboard/KeyButton.cpp
 
 HEADERS += \
         armv4l2opencv.h \
     v4l2api.h \
     administratorw.h \
-    MyLineEdit/mylineedit.h
+    MyLineEdit/mylineedit.h \
+    Keyboard/AbstractKeyboard.h \
+    Keyboard/Keyboard.h \
+    Keyboard/KeyButton.h
 
 FORMS += \
         armv4l2opencv.ui \

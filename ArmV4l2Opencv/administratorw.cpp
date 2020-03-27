@@ -1,4 +1,4 @@
-#include "administratorw.h"
+﻿#include "administratorw.h"
 #include "ui_administratorw.h"
 #include "v4l2api.h"
 
@@ -13,6 +13,34 @@ AdministratorW::AdministratorW(QWidget *parent) :
     ui->setupUi(this);
     DirFileNum = 0;
     FaceNum = 1;
+
+    connect(ui->UserLineEdit, SIGNAL(clicked()), this, SLOT(UserLineEditClicked()));
+    connect(ui->PassLineEdit, SIGNAL(clicked()), this, SLOT(PassLineEditClicked()));
+
+    //创建键盘
+//    QWidget window;
+    KeyboardWindow.setWindowTitle("QtKeyboard");
+    KeyboardWindow.resize(800,420);
+    //AeaQt::Keyboard keyboard;
+
+    textInput = new QLineEdit(&keyboard);
+    textInput->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    textInput->setStyleSheet(R"(
+                            QLineEdit {
+                                border-style: none;
+                                padding: 3px;
+                                border-radius: 5px;
+                                border: 1px solid #dce5ec;
+                                font-size: 30px;
+                            }
+                            )");
+
+    v = new QVBoxLayout;
+    v->addWidget(textInput, 1);
+    v->addWidget(&keyboard, 5);
+
+    KeyboardWindow.setLayout(v);
+
 }
 
 AdministratorW::~AdministratorW()
@@ -168,6 +196,19 @@ void AdministratorW::on_SureBt_clicked()
     ui->messageLable_2->setText(" ");
     ui->messageLable_3->setText(" ");
     ui->messageLable_4->setText("新员工信息存储完成");
+}
+
+void AdministratorW::UserLineEditClicked()
+{
+    this->hide();
+    keyboard.show();
+    KeyboardWindow.show();
+}
+
+void AdministratorW::PassLineEditClicked()
+{
+    keyboard.show();
+    KeyboardWindow.show();
 }
 
 

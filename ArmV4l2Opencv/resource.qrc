@@ -10,5 +10,12 @@
         <file>images/shutdownButton.png</file>
         <file>images/button1.png</file>
         <file>images/button2.png</file>
+        <file>images/login1.jpg</file>
+        <file>images/KeyboardImage/backspace.png</file>
+        <file>images/KeyboardImage/caplock.png</file>
+        <file>images/KeyboardImage/enter.png</file>
+        <file>images/KeyboardImage/space.png</file>
+        <file>ChineseLib/pinyin.txt</file>
+        <file>ChineseLib/pinyin_phrase.txt</file>
     </qresource>
 </RCC>

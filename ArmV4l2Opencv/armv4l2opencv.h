@@ -17,6 +17,7 @@
 #include <QFileInfo>
 #include <QMovie>
 
+
 namespace Ui {
 class ArmV4l2Opencv;
 }
