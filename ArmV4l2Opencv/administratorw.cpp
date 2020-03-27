@@ -41,6 +41,8 @@ AdministratorW::AdministratorW(QWidget *parent) :
 
     KeyboardWindow.setLayout(v);
 
+    Administratoruser = "李春港";
+    AdministratorPass = "123456";
 }
 
 AdministratorW::~AdministratorW()
@@ -200,15 +202,25 @@ void AdministratorW::on_SureBt_clicked()
 
 void AdministratorW::UserLineEditClicked()
 {
-    this->hide();
+    UserAndPassLineEditFlag = true;
+
     keyboard.show();
     KeyboardWindow.show();
+    ui->KeyboardReturnPushButton->show();
+    ui->KeyboardSurePushButton->show();
+
+    textInput->setText(ui->UserLineEdit->text());
 }
 
 void AdministratorW::PassLineEditClicked()
 {
+    UserAndPassLineEditFlag = false;
     keyboard.show();
     KeyboardWindow.show();
+    ui->KeyboardReturnPushButton->show();
+    ui->KeyboardSurePushButton->show();
+
+    textInput->setText(ui->PassLineEdit->text());
 }
 
 
@@ -245,4 +257,79 @@ void AdministratorW::UpdateDatabase_imagePathId(QString dirPath)
             }
         }
     }
+}
+
+void AdministratorW::WindowShow()
+{
+    if(ui->checkBox->checkState() == Qt::Checked)
+        ui->PassLineEdit->setText(SavePass);
+    else
+        ui->PassLineEdit->clear();
+
+    ui->LoginLabel->show();
+    ui->loginPushButton->show();
+    ui->pushButton->show();
+    ui->UserLineEdit->show();
+    ui->PassLineEdit->show();
+    ui->checkBox->show();
+    ui->KeyboardReturnPushButton->hide();
+    ui->KeyboardSurePushButton->hide();
+    ui->HintLabel->hide();
+    this->show();
+}
+
+void AdministratorW::on_pushButton_clicked()
+{
+    this->parentWidget()->show();
+    this->hide();
+
+    if(ui->checkBox->checkState() == Qt::Checked)
+        SavePass = textInput->text();
+}
+
+void AdministratorW::on_loginPushButton_clicked()
+{
+    if(ui->checkBox->checkState() == Qt::Checked)
+        SavePass = textInput->text();
+
+    if(ui->UserLineEdit->text() == Administratoruser && ui->PassLineEdit->text() == AdministratorPass)
+    {
+        ui->LoginLabel->hide();
+        ui->loginPushButton->hide();
+        ui->pushButton->hide();
+        ui->UserLineEdit->hide();
+        ui->PassLineEdit->hide();
+        ui->checkBox->hide();
+        ui->HintLabel->hide();
+    }
+    else
+    {
+        ui->HintLabel->show();
+    }
+}
+
+void AdministratorW::on_KeyboardReturnPushButton_clicked()
+{
+    keyboard.hide();
+    KeyboardWindow.hide();
+    ui->KeyboardReturnPushButton->hide();
+    ui->KeyboardSurePushButton->hide();
+}
+
+void AdministratorW::on_KeyboardSurePushButton_clicked()
+{
+    keyboard.hide();
+    KeyboardWindow.hide();
+    ui->KeyboardReturnPushButton->hide();
+    ui->KeyboardSurePushButton->hide();
+
+    if(UserAndPassLineEditFlag)
+    {
+        ui->UserLineEdit->setText(textInput->text());
+    }
+    else
+    {
+        ui->PassLineEdit->setText(textInput->text());
+    }
+
 }

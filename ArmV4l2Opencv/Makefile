@@ -512,6 +512,7 @@ qrc_resource.cpp: resource.qrc \
 		images/background1.png \
 		images/background.png \
 		images/start.gif \
+		images/return.png \
 		images/LittleRobot.png \
 		images/button2.png \
 		images/StartButton1.png \
@@ -795,6 +796,42 @@ moc_armv4l2opencv.cpp: administratorw.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qboxlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayoutitem.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qgridlayout.h \
+		MyLineEdit/mylineedit.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMouseEvent \
+		Keyboard/Keyboard.h \
+		Keyboard/AbstractKeyboard.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QKeyEvent \
+		Keyboard/KeyButton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QListWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractitemmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qitemselectionmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemdelegate.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyleoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractspinbox.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvalidator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregularexpression.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyle.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabbar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qrubberband.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QHash \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPair \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTime \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatetime.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
@@ -1301,6 +1338,42 @@ moc_administratorw.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWind
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qboxlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayoutitem.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qgridlayout.h \
+		MyLineEdit/mylineedit.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMouseEvent \
+		Keyboard/Keyboard.h \
+		Keyboard/AbstractKeyboard.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QKeyEvent \
+		Keyboard/KeyButton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QListWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractitemmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qitemselectionmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemdelegate.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyleoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractspinbox.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvalidator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregularexpression.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyle.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabbar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qrubberband.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QHash \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPair \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		administratorw.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
 	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/Desktop/graduation/attendance-system/ArmV4l2Opencv -I/opt/arm-opencv/include -I/opt/arm-opencv/include/opencv -I/opt/arm-opencv/include/opencv2 -I/mnt/hgfs/Desktop/graduation/attendance-system/ArmV4l2Opencv/libjpeg -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtSql -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include administratorw.h -o moc_administratorw.cpp
@@ -2062,6 +2135,42 @@ main.o: main.cpp armv4l2opencv.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qboxlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayoutitem.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qgridlayout.h \
+		MyLineEdit/mylineedit.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMouseEvent \
+		Keyboard/Keyboard.h \
+		Keyboard/AbstractKeyboard.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QKeyEvent \
+		Keyboard/KeyButton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QListWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractitemmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qitemselectionmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemdelegate.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyleoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractspinbox.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvalidator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregularexpression.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyle.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabbar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qrubberband.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QHash \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPair \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTime \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatetime.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
@@ -2349,6 +2458,42 @@ armv4l2opencv.o: armv4l2opencv.cpp armv4l2opencv.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qboxlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayoutitem.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qgridlayout.h \
+		MyLineEdit/mylineedit.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMouseEvent \
+		Keyboard/Keyboard.h \
+		Keyboard/AbstractKeyboard.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QKeyEvent \
+		Keyboard/KeyButton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QListWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractitemmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qitemselectionmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemdelegate.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyleoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractspinbox.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvalidator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregularexpression.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyle.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabbar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qrubberband.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QHash \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPair \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTime \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatetime.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
@@ -2870,6 +3015,42 @@ administratorw.o: administratorw.cpp administratorw.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qboxlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayoutitem.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qgridlayout.h \
+		MyLineEdit/mylineedit.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMouseEvent \
+		Keyboard/Keyboard.h \
+		Keyboard/AbstractKeyboard.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QKeyEvent \
+		Keyboard/KeyButton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QListWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlistview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractitemmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qitemselectionmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemdelegate.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyleoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractspinbox.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvalidator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregularexpression.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyle.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabbar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qrubberband.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QHash \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPair \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		ui_administratorw.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o administratorw.o administratorw.cpp
 
@@ -2977,7 +3158,8 @@ mylineedit.o: MyLineEdit/mylineedit.cpp MyLineEdit/mylineedit.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextformat.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpen.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextoption.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMouseEvent
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMouseEvent \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mylineedit.o MyLineEdit/mylineedit.cpp
 
 Keyboard.o: Keyboard/Keyboard.cpp Keyboard/Keyboard.h \

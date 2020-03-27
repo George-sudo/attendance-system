@@ -29,6 +29,8 @@ public:
     void recvImage(QImage image,QImage HImage);
     void getFaceDirinfo();
     void UpdateDatabase_imagePathId(QString dirPath);
+    void WindowShow();
+
 private slots:
     void on_retBt_clicked();
 
@@ -40,6 +42,14 @@ private slots:
 
     void UserLineEditClicked();
     void PassLineEditClicked();
+
+    void on_pushButton_clicked();
+
+    void on_loginPushButton_clicked();
+
+    void on_KeyboardReturnPushButton_clicked();
+
+    void on_KeyboardSurePushButton_clicked();
 
 private:
     Ui::AdministratorW *ui;
@@ -54,6 +64,10 @@ private:
     QWidget KeyboardWindow;
     QLineEdit *textInput;
     QVBoxLayout *v;
+    bool UserAndPassLineEditFlag;
+    QString SavePass;
+    QString Administratoruser;
+    QString AdministratorPass;
 };
 
 #endif // ADMINISTRATORW_H

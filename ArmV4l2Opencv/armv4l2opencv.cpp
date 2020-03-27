@@ -168,7 +168,7 @@ void ArmV4l2Opencv::recvImage(QImage image,QImage headImage)
 void ArmV4l2Opencv::on_systemLogBt_clicked()
 {
     this->hide();
-    AdW->show();
+    AdW->WindowShow();
 }
 
 void ArmV4l2Opencv::on_pCardBt_clicked()
