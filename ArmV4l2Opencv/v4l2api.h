@@ -1,4 +1,4 @@
-#ifndef V4L2API_H
+﻿#ifndef V4L2API_H
 #define V4L2API_H
 #include <iostream>
 #include <vector>
@@ -84,6 +84,9 @@ private:
     //脸和眼睛分类器
     CascadeClassifier face_cascade;
     CascadeClassifier eyes_cascade;
+
+    Mat MyFace;
+    bool FaceFlag;
 
 signals:
     void sendImage(QImage,QImage);

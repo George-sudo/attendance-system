@@ -11,6 +11,8 @@ V4l2Api::V4l2Api(const char *dname, int count):deviceName(dname),count(count)
     this->open();
     //打卡标志位
     PCard = false;
+
+    FaceFlag = false;
 }
 
 
@@ -307,7 +309,7 @@ void V4l2Api::run()
     }
 
     while(1)
-    {
+    { 
         grapImage((char *)buffer, &len);
 
         cvtColor(yuvImage, rgbImage, CV_YUV2RGB_YUYV);
@@ -319,11 +321,16 @@ void V4l2Api::run()
         detectAndDisplay( rgbImage, headImage);
 
         QImage Q_rgbImage(rgbImage.data, rgbImage.cols, rgbImage.rows, rgbImage.step1() , QImage::Format_RGB888);
-        QImage Q_HeadImage(headImage.data, headImage.cols, headImage.rows, headImage.step1() , QImage::Format_RGB888);
-        emit sendImage(Q_rgbImage,Q_HeadImage);
+        QImage Q_HeadImage(MyFace.data, MyFace.cols, MyFace.rows, MyFace.step1() , QImage::Format_RGB888);
+
+        if(FaceFlag)
+            emit sendImage(Q_rgbImage,Q_HeadImage);
+        else
+            emit sendImage(Q_rgbImage,Q_rgbImage);
+
 
         //打卡
-        if(PCard == true)
+        if((PCard == true) && (FaceFlag == true))
         {
             if(Q_HeadImage.width()==92 && Q_HeadImage.height()==112)
             {
@@ -353,12 +360,12 @@ void V4l2Api::run()
                     emit sendPersonInfo(name,id,state);
                 }
 
-            }
-
-            PCard = false;
+            } 
         }
 
-        msleep(10);
+        FaceFlag = false;
+        PCard = false;
+        msleep(5);
     }
 }
 
@@ -401,13 +408,11 @@ void V4l2Api::detectAndDisplay( Mat& frame,Mat& Image )
 
         //剪切脸部，重新设置大小
         Mat faceROI = Image(faces[i]);//对headImage图像重新设置大小和faces[i]一样
-        Mat MyFace;
         if (faceROI.cols > 100)
         {
             //重新设置图片大小
             resize(faceROI, MyFace, Size(92, 112));
-            //复制数据
-            Image = MyFace.clone();
+            FaceFlag = true;
         }
     }
 
