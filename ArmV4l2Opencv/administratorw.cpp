@@ -140,7 +140,12 @@ void AdministratorW::getFaceDirinfo()
             {
                 continue;
             }
-            DirFileNum = DirName.toInt();
+
+            if(DirFileNum < DirName.toInt())
+            {
+               DirFileNum = DirName.toInt();
+            }
+
         }
     }
 }
