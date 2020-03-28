@@ -123,7 +123,7 @@ void AdministratorW::on_InIofoBt_clicked()
 
     getFaceDirinfo();
     char sys[512] = {0};
-    sprintf(sys,"mkdir ./faces/%d",DirFileNum+1);
+    sprintf(sys,"mkdir ./faces/%d -p",DirFileNum+1);
     system(sys);
 }
 
