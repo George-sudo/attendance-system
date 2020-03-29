@@ -2,8 +2,6 @@
     <qresource prefix="/resource">
         <file>images/start.gif</file>
         <file>images/LittleRobot.png</file>
-        <file>images/background1.png</file>
-        <file>images/background2.png</file>
         <file>images/StartButton1.png</file>
         <file>images/circle.gif</file>
         <file>images/background.png</file>
@@ -18,5 +16,9 @@
         <file>ChineseLib/pinyin.txt</file>
         <file>ChineseLib/pinyin_phrase.txt</file>
         <file>images/return.png</file>
+        <file>images/background1.jpg</file>
+        <file>images/button3.png</file>
+        <file>images/button4.png</file>
+        <file>images/button5.png</file>
     </qresource>
 </RCC>

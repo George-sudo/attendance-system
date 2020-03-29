@@ -42,6 +42,8 @@ private slots:
 
     void UserLineEditClicked();
     void PassLineEditClicked();
+    void nameLEClicked();
+    void NumLineEditClicked();
 
     void on_pushButton_clicked();
 
@@ -50,6 +52,18 @@ private slots:
     void on_KeyboardReturnPushButton_clicked();
 
     void on_KeyboardSurePushButton_clicked();
+
+    void on_NextBt_clicked();
+
+    void on_NameBt_clicked();
+
+    void on_ReturnAdMBt_clicked();
+
+    void on_DelIofoBt_clicked();
+
+    void on_DelNumSureBt_clicked();
+
+    void on_ReturnDelBt_clicked();
 
 private:
     Ui::AdministratorW *ui;
@@ -64,8 +78,10 @@ private:
     QWidget KeyboardWindow;
     QLineEdit *textInput;
     QVBoxLayout *v;
-    bool UserAndPassLineEditFlag;
+    int KeyboardSureLineEditFlag;
     QString SavePass;
+    int NextFlag;
+    bool SureFlag;
 };
 
 #endif // ADMINISTRATORW_H

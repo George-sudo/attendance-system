@@ -506,15 +506,17 @@ compiler_rcc_clean:
 qrc_resource.cpp: resource.qrc \
 		/usr/local/Qt-Embedded-5.7.0/bin/rcc \
 		images/button1.png \
-		images/background2.png \
+		images/button5.png \
 		images/circle.gif \
 		images/shutdownButton.png \
-		images/background1.png \
 		images/background.png \
+		images/button4.png \
+		images/button3.png \
 		images/start.gif \
 		images/return.png \
 		images/LittleRobot.png \
 		images/button2.png \
+		images/background1.jpg \
 		images/StartButton1.png \
 		images/login1.jpg \
 		images/KeyboardImage/backspace.png \
@@ -1853,7 +1855,112 @@ ui_armv4l2opencv.h: armv4l2opencv.ui \
 	/usr/local/Qt-Embedded-5.7.0/bin/uic armv4l2opencv.ui -o ui_armv4l2opencv.h
 
 ui_administratorw.h: administratorw.ui \
-		/usr/local/Qt-Embedded-5.7.0/bin/uic
+		/usr/local/Qt-Embedded-5.7.0/bin/uic \
+		MyLineEdit/mylineedit.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLineEdit \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlineedit.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qframe.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs_win.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmargins.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpaintdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsize.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpalette.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcolor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgb.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgba64.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qbrush.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmatrix.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpolygon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qregion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatastream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qline.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtransform.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainterpath.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimage.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixelformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfont.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontmetrics.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qsizepolicy.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qkeysequence.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurlquery.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfile.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfiledevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvector2d.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpen.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMouseEvent
 	/usr/local/Qt-Embedded-5.7.0/bin/uic administratorw.ui -o ui_administratorw.h
 
 compiler_yacc_decl_make_all:

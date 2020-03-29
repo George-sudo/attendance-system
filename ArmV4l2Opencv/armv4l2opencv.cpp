@@ -109,19 +109,19 @@ void ArmV4l2Opencv::showPersonInfo(QString name,int id,int state)
     case 0:
         if(time.hour() < 12)
         {
-            ui->InfoLabel->setText(QString("'%1' 早上好！上班打卡成功！").arg(name));
+            ui->InfoLabel->setText(QString("工号%1号 %2 早上好!上班打卡成功!").arg(id).arg(name));
         }
         else if(12 < time.hour() < 14)
         {
-            ui->InfoLabel->setText(QString("'%1' 中午好！上班打卡成功！").arg(name));
+            ui->InfoLabel->setText(QString("工号%1号 %2 中午好!上班打卡成功!").arg(id).arg(name));
         }
         else if(14 < time.hour() < 19)
         {
-            ui->InfoLabel->setText(QString("'%1' 下午好！上班打卡成功！").arg(name));
+            ui->InfoLabel->setText(QString("工号%1号 %2 下午好!上班打卡成功!").arg(id).arg(name));
         }
         else
         {
-            ui->InfoLabel->setText(QString("'%1' 晚上好！上班打卡成功！").arg(name));
+            ui->InfoLabel->setText(QString("工号%1号 %2 晚上好!上班打卡成功!").arg(id).arg(name));
         }
 
         //更新数据库上下班状态
@@ -134,19 +134,19 @@ void ArmV4l2Opencv::showPersonInfo(QString name,int id,int state)
     case 1:
         if(time.hour() < 12)
         {
-            ui->InfoLabel->setText(QString("'%1' 早上好！下班打卡成功！").arg(name));
+            ui->InfoLabel->setText(QString("工号%1号 %2 早上好!下班打卡成功!").arg(id).arg(name));
         }
         else if(12 < time.hour() < 14)
         {
-            ui->InfoLabel->setText(QString("'%1' 中午好！下班打卡成功！").arg(name));
+            ui->InfoLabel->setText(QString("工号%1号 %2 中午好!下班打卡成功!").arg(id).arg(name));
         }
         else if(14 < time.hour() < 19)
         {
-            ui->InfoLabel->setText(QString("'%1' 下午好！下班打卡成功！").arg(name));
+            ui->InfoLabel->setText(QString("工号%1号 %2 下午好!下班打卡成功!").arg(id).arg(name));
         }
         else
         {
-            ui->InfoLabel->setText(QString("'%1' 晚上好！下班打卡成功！").arg(name));
+            ui->InfoLabel->setText(QString("工号%1号 %2 晚上好!下班打卡成功!").arg(id).arg(name));
         }
 
         //更新数据库上下班状态
